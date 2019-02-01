@@ -1,0 +1,30 @@
+<!--Semantic-UI fixed menu -->
+<div class="ui fixed inverted menu">
+    <div class="ui container">
+      <a href="/" class="header item">
+      <img src="<%= Routes.static_path(@conn, "/images/bull.svg") %>" alt="Bull icon"/>
+        <span class="app-name">Bullish</span>
+      </a>
+       <a href="#" class="item">link</a>
+        <a href="#" class="item">link</a>
+       <%= if @conn.assigns[:user_signed_in?] do %>
+        <% end %>
+      <!-- Right Menu -->
+      <div class="right menu">
+    <%= if @conn.assigns[:user_signed_in?] do %>
+      <span class="item">
+         <div class="ui mini compact blue message">
+         logged in as <%= @conn.assigns[:current_user].name %>
+        </div>
+      </span>
+    <span class="item">
+     <%= link raw(~s'<i class="sign out alternate icon"></i>Logout'), to: "/logout", class: "tiny ui compact red button" %>
+
+    </span>
+      <% else %>
+      <span class="item"><a class="ui primary button" href="/auth/auth0">Sign in</a></span>
+      <% end %>
+      </div>
+    </div>
+  </div>
+  <br>

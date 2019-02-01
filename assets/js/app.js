@@ -3,6 +3,7 @@
 // its own CSS file.
 import css from "../css/app.css"
 
+console.log('app.js loaded');
 // webpack automatically bundles all modules in your
 // entry points. Those entry points can be configured
 // in "webpack.config.js".
@@ -15,3 +16,4 @@ import "phoenix_html"
 //
 // Local files can be imported directly using relative paths, for example:
 // import socket from "./socket"
+

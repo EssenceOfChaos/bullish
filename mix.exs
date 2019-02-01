@@ -42,7 +42,13 @@ defmodule Bullish.MixProject do
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      ## Added Deps ##
+      {:httpoison, "~> 1.4"},
+      {:poison, "~> 3.1"},
+      {:ueberauth, "~> 0.5"},
+      {:ueberauth_auth0, "~> 0.3"},
+      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false}
     ]
   end
 
@@ -56,7 +62,8 @@ defmodule Bullish.MixProject do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate", "test"]
+      test: ["ecto.create --quiet", "ecto.migrate", "test"],
+      "ecto.migrate": ["ecto.migrate", "ecto.dump"] # view schema after migrations
     ]
   end
 end

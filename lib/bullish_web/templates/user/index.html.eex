@@ -1,0 +1,40 @@
+<h1>Listing Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Auth</th>
+      <th>Avatar</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Display name</th>
+      <th>Play balance</th>
+      <th>Rank</th>
+      <th>Watch list</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for user <- @users do %>
+    <tr>
+      <td><%= user.auth_id %></td>
+      <td><%= user.avatar %></td>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.display_name %></td>
+      <td><%= user.play_balance %></td>
+      <td><%= user.rank %></td>
+      <td><%= user.watch_list %></td>
+
+      <td>
+        <%= link "Show", to: Routes.user_path(@conn, :show, user) %>
+        <%= link "Edit", to: Routes.user_path(@conn, :edit, user) %>
+        <%= link "Delete", to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New User", to: Routes.user_path(@conn, :new) %></span>
