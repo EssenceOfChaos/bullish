@@ -1,0 +1,1 @@
+alias Bullish.Api.Service

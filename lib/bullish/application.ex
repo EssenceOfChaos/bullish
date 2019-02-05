@@ -11,9 +11,10 @@ defmodule Bullish.Application do
       # Start the Ecto repository
       Bullish.Repo,
       # Start the endpoint when the application starts
-      BullishWeb.Endpoint
+      BullishWeb.Endpoint,
       # Starts a worker by calling: Bullish.Worker.start_link(arg)
       # {Bullish.Worker, arg},
+      {Bullish.Api.Server, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

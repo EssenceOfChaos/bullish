@@ -13,17 +13,13 @@
   </head>
   <body>
   <%= render "_navbar.html", conn: @conn %>
-    <header>
-      <section class="container">
-        <nav role="navigation">
-          <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
-          </ul>
-        </nav>
-        <a href="http://phoenixframework.org/" class="phx-logo">
-          <img src="<%= Routes.static_path(@conn, "/images/phoenix.png") %>" alt="Phoenix Framework Logo"/>
-        </a>
-      </section>
+    <header class="header">
+      <div class="ui text container">
+      <div class="ui block center aligned header">
+        <h1>Bullish Market</h1>
+         <h2>Stack up, if you can!</h2>
+      </div>
+    </div>
     </header>
    <!-- sui container -->
     <div class="ui container" id="app-wrapper">

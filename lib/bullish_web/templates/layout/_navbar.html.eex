@@ -5,10 +5,9 @@
       <img src="<%= Routes.static_path(@conn, "/images/bull.svg") %>" alt="Bull icon"/>
         <span class="app-name">Bullish</span>
       </a>
-       <a href="#" class="item">link</a>
-        <a href="#" class="item">link</a>
-       <%= if @conn.assigns[:user_signed_in?] do %>
-        <% end %>
+
+      <a href="#" class="item">link</a>
+
       <!-- Right Menu -->
       <div class="right menu">
     <%= if @conn.assigns[:user_signed_in?] do %>
@@ -18,11 +17,13 @@
         </div>
       </span>
     <span class="item">
-     <%= link raw(~s'<i class="sign out alternate icon"></i>Logout'), to: "/logout", class: "tiny ui compact red button" %>
+     <%= link raw(~s'<i class="sign out alternate icon"></i>Log out'), to: "/logout", class: "tiny ui compact red button" %>
 
     </span>
       <% else %>
-      <span class="item"><a class="ui primary button" href="/auth/auth0">Sign in</a></span>
+      <div class="item">
+        <%= link raw(~s'<i class="sign in alternate icon"></i>Sign in'), to: "/auth/auth0", class: "tiny ui compact primary button"%>
+      </div>
       <% end %>
       </div>
     </div>

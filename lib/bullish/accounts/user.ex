@@ -14,6 +14,8 @@ defmodule Bullish.Accounts.User do
     field :rank, :integer
     field :watch_list, {:array, :string}
 
+    has_one(:portfolios, Bullish.Investments.Portfolio)
+
     timestamps()
   end
 

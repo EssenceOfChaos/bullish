@@ -1,0 +1,17 @@
+<h1>Show Portfolio</h1>
+
+<ul>
+
+ <%= for {k, v} <- @portfolio.stocks do %>
+  <strong><%= k %>:</strong> <%= Number.Currency.number_to_currency(v) %><br>
+<%end%>
+
+<br>
+Portfolio created in <%=@portfolio.inserted_at.year%>
+
+
+
+</ul>
+
+<span><%= link "Edit", to: Routes.portfolio_path(@conn, :edit, @portfolio) %></span>
+<span><%= link "Back", to: Routes.portfolio_path(@conn, :index) %></span>

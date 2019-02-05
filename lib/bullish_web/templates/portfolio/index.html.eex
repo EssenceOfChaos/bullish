@@ -1,0 +1,30 @@
+<h1>Listing Portfolios</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Stocks</th>
+      <th>Investment</th>
+      <th>Current value</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for portfolio <- @portfolios do %>
+    <tr>
+      <td><%= portfolio.stocks %></td>
+      <td><%= portfolio.investment %></td>
+      <td><%= portfolio.current_value %></td>
+
+      <td>
+        <%= link "Show", to: Routes.portfolio_path(@conn, :show, portfolio) %>
+        <%= link "Edit", to: Routes.portfolio_path(@conn, :edit, portfolio) %>
+        <%= link "Delete", to: Routes.portfolio_path(@conn, :delete, portfolio), method: :delete, data: [confirm: "Are you sure?"] %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Portfolio", to: Routes.portfolio_path(@conn, :new) %></span>

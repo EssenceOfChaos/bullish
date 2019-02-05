@@ -6,4 +6,9 @@ defmodule BullishWeb.PageController do
     IO.inspect(conn)
     render(conn, "index.html")
   end
+
+  def search(conn, %{"symbol" => symbol}) do
+    stock = Bullish.Api.Server.get_price(:iex_server, symbol)
+    render(conn, stock: stock)
+  end
 end

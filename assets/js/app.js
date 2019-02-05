@@ -17,3 +17,14 @@ import "phoenix_html"
 // Local files can be imported directly using relative paths, for example:
 // import socket from "./socket"
 
+document.addEventListener('DOMContentLoaded', function(event) {
+  $('select.dropdown')
+  .dropdown();
+
+  var
+  $form = $('.ui.form'),
+  allFields = $form.form('get values');
+  console.log(allFields);
+
+
+});

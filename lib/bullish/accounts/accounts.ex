@@ -62,21 +62,18 @@ defmodule Bullish.Accounts do
 
   ## Use auth0 callback to create a user ##
   def find_or_add(attrs = %{id: id, avatar: avatar, name: name}) do
-    IO.puts("**~~ what are the attrs passed to find_or_add !?!?!?!? ~~**")
-    IO.inspect(attrs)
-    # Repo.get_by(User, auth_id: id)
     case get_user(id) do
       %User{auth_id: id} -> IO.puts("***~~~ User exists in DB ~~~***")
       _ -> User.changeset(%User{auth_id: id, avatar: avatar, name: name}, attrs) |> Repo.insert()
     end
   end
 
-  defp check_for_user(id) do
+  # defp check_for_user(id) do
     # user =
     #   from(u in User)
     #   |> where([u], u.auth_id == ^id)
     #   |> Repo.one()
-  end
+  # end
 
 
   @doc """
