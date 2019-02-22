@@ -1,40 +1,64 @@
-  <!-- HEADER -->
     <header class="header">
       <div class="ui text container">
-      <div class="ui block center aligned header">
+      <div class="ui center aligned header">
         <h1 class="animated slideInUp">Bullish Market</h1>
-         <h2>Stack up, if you can!</h2>
+         <h2>Pick the right stocks and watch your earnings rise!</h2>
+         <div class="ui huge animated purple button" tabindex="0">
+          <div class="visible content">Get started</div>
+          <div class="hidden content">
+            <i class="right arrow icon"></i>
+          </div>
       </div>
     </div>
     </header>
     <br>
-    <!-- /HEADER -->
-    <img class="wireframe" src="/images/demo/paragraph.png">
-    <br>
 
+  <section class="ui container">
+
+      <div class="ui center aligned header">
+    <h2 >
+      <i class="chart area icon"></i>
+      <div class="content">
+        Sector Performance
+        <div class="sub header">A Quick Gauge of the Economy</div>
+      </div>
+    </h2>
+  </div>
+
+  <div class="ui text container">
+    <br>
+    <div class="ui three cards">
+     <div class="card">
+     <div class="content">
+            <div class="header">sector name</div>
+     </div>
+        <div class="content">
+            <h4 class="ui sub header">sector performance</h4>
+            <div class="ui small feed">
+              <div class="event">
+                <div class="content">
+                  <div class="summary">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="extra content">
+              Last updated: :date:
+          </div>
+     </div>
+
+    </div>
+  </div>
+
+  </section>
 <br>
-<br>
+
+    <br>
+    <br>
 <%= if @conn.assigns[:user_signed_in?] do %>
   <div class="item">
   <%= link raw(~s'<i class="chart pie icon"></i>Create Portfolio'), to: Routes.portfolio_path(@conn, :new), class: "ui yellow button" %>
   </div>
 <% end %>
-
-<section class="phx-hero">
-  <h1><%= gettext "Welcome to %{name}!", name: "Bullish" %></h1>
-</section>
-
-<section class="row">
-  <article class="column">
-    Other words here
-  </article>
-  <div class="column">
-    <div class="ui stock search">
-      <div class="ui icon input">
-        <input class="prompt" type="text" placeholder="Search stocks...">
-        <i class="search icon"></i>
-      </div>
-      <div class="results"></div>
-    </div>
-  </div>
-</section>

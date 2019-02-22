@@ -1,5 +1,5 @@
 <!--Semantic-UI fixed menu -->
-<div class="ui fixed inverted menu">
+<div class="ui fixed menu">
     <div class="ui container">
       <a href="/" class="header item">
       <img src="<%= Routes.static_path(@conn, "/images/bull.svg") %>" alt="Bull icon"/>
@@ -27,7 +27,7 @@
     </span>
       <% else %>
       <div class="item">
-        <%= link raw(~s'<i class="sign in alternate icon"></i>Sign in'), to: "/auth/auth0", class: "tiny ui compact primary button"%>
+        <%= link raw(~s'<i class="sign in alternate icon"></i>Sign in'), to: "/auth/auth0", class: "tiny ui compact purple button"%>
       </div>
       <% end %>
       </div>
