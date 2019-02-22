@@ -5,7 +5,12 @@
       <img src="<%= Routes.static_path(@conn, "/images/bull.svg") %>" alt="Bull icon"/>
         <span class="app-name">Bullish</span>
       </a>
-
+      <!-- User Profile -->
+      <%= if @conn.assigns[:user_signed_in?] do %>
+        <div class="item">
+          <%= link raw(~s'<i class="user circle icon"></i>Profile'), to: Routes.user_path(@conn, :show, @conn.assigns[:current_user].id), class: "tiny ui compact green button" %>
+        </div>
+      <% end %>
       <a href="#" class="item">link</a>
 
       <!-- Right Menu -->

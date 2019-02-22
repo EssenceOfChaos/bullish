@@ -30,6 +30,7 @@ defmodule BullishWeb.Router do
     resources "/users", UserController
     get "/logout", AuthController, :logout
     resources "/portfolios", PortfolioController
+    get "/test", PageController, :test
   end
 
   # Other scopes may use custom stacks.

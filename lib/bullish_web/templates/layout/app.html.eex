@@ -6,38 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="Stock Market Analysis with Data Insights">
     <meta name="author" content="Frederick John">
-    <title>Bullish</title>
+    <title><%= title() %></title>
+    <!-- Animate CSS CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <!-- Google Fonts CDN-->
+    <link href="https://fonts.googleapis.com/css?family=Gentium+Basic|Poppins|Varela+Round" rel="stylesheet">
     <!-- Semantic-UI CSS CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
   </head>
   <body>
+  <!-- NAVBAR -->
   <%= render "_navbar.html", conn: @conn %>
-    <header class="header">
-      <div class="ui text container">
-      <div class="ui block center aligned header">
-        <h1>Bullish Market</h1>
-         <h2>Stack up, if you can!</h2>
-      </div>
-    </div>
-    </header>
-   <!-- sui container -->
+  <!-- /NAVBAR -->
+
+    <!-- MAIN -->
     <div class="ui container" id="app-wrapper">
       <main role="main">
         <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
         <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
         <%= render @view_module, @view_template, assigns %>
       </main>
-    </div><!-- /sui container -->
-  <!-- Temporary Footer -->
-    <footer><p>Created by <a href="https://github.com/essenceofchaos">Frederick John</a> &copy; <%= date() %></p></footer>
+    </div>
+    <!-- /MAIN -->
+  <!-- FOOTER -->
+  <%= render "_footer.html", conn: @conn %>
+  <!-- /FOOTER -->
   <!-- JQuery CDN -->
     <script
       src="https://code.jquery.com/jquery-3.1.1.min.js"
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
       crossorigin="anonymous">
     </script>
+  <!-- Semantic-UI JS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+  <!-- Application JS -->
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

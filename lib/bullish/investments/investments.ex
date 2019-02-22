@@ -52,8 +52,11 @@ defmodule Bullish.Investments do
   """
   def create_portfolio(%User{} = user, attrs \\ %{}) do
     stocks = Service.batch_quote(attrs)
+    #recently added
+    investment = Enum.reduce(stocks, 0, fn({_k, v}, acc) -> v + acc end)
     %Portfolio{}
     |> Portfolio.changeset(Map.put(attrs, "stocks", stocks))
+    |> Portfolio.changeset(Map.put(attrs, "investment", investment))#recently added
     |> put_user(user)
     |> Repo.insert()
   end

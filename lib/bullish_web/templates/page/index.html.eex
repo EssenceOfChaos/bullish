@@ -1,3 +1,19 @@
+  <!-- HEADER -->
+    <header class="header">
+      <div class="ui text container">
+      <div class="ui block center aligned header">
+        <h1 class="animated slideInUp">Bullish Market</h1>
+         <h2>Stack up, if you can!</h2>
+      </div>
+    </div>
+    </header>
+    <br>
+    <!-- /HEADER -->
+    <img class="wireframe" src="/images/demo/paragraph.png">
+    <br>
+
+<br>
+<br>
 <%= if @conn.assigns[:user_signed_in?] do %>
   <div class="item">
   <%= link raw(~s'<i class="chart pie icon"></i>Create Portfolio'), to: Routes.portfolio_path(@conn, :new), class: "ui yellow button" %>

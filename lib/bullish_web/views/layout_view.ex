@@ -7,4 +7,8 @@ defmodule BullishWeb.LayoutView do
     datetime.year
   end
 
+  def title() do
+    "Bullish"
+  end
+
 end

@@ -8,10 +8,11 @@ defmodule Bullish.Api.Server do
   ## ------------------------------------------------- ##
   ##                   Client API                      ##
   ## ------------------------------------------------- ##
-  def start_link(opts \\ []) do
+  def start_link(_opts ) do
     GenServer.start_link(__MODULE__, :ok, name: :iex_server)
   end
 
+  @spec get_price(atom() | pid() | {atom(), any()} | {:via, atom(), any()}, any()) :: any()
   def get_price(pid, stock) do
     GenServer.call(pid, {:stock, stock})
   end
