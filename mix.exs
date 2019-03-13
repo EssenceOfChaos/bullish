@@ -65,7 +65,7 @@ defmodule Bullish.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate", "test"],
-      "ecto.migrate": ["ecto.migrate", "ecto.dump"] # view schema after migrations
+      "ecto.migrate": ["ecto.migrate"]
     ]
   end
 end

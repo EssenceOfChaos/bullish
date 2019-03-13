@@ -1,8 +1,10 @@
 defmodule Bullish.Investments.Portfolio do
+  @moduledoc """
+  The Portfolio data model
+  """
 
   use Ecto.Schema
   import Ecto.Changeset
-
 
   schema "portfolios" do
     field :current_value, :float

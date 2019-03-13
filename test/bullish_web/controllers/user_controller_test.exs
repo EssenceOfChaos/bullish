@@ -1,11 +1,39 @@
 defmodule BullishWeb.UserControllerTest do
+  @moduledoc false
   use BullishWeb.ConnCase
 
   alias Bullish.Accounts
 
-  @create_attrs %{auth_id: "some auth_id", avatar: "some avatar", display_name: "some display_name", email: "some email", name: "some name", play_balance: 42, rank: 42, watch_list: []}
-  @update_attrs %{auth_id: "some updated auth_id", avatar: "some updated avatar", display_name: "some updated display_name", email: "some updated email", name: "some updated name", play_balance: 43, rank: 43, watch_list: []}
-  @invalid_attrs %{auth_id: nil, avatar: nil, display_name: nil, email: nil, name: nil, play_balance: nil, rank: nil, watch_list: nil}
+  @create_attrs %{
+    auth_id: "123",
+    avatar: "http://example.com/link/to/img",
+    display_name: "Some Guy",
+    email: "guy123@yahoo.com",
+    name: "Guy Montag",
+    play_balance: 42,
+    rank: 42,
+    watch_list: []
+  }
+  @update_attrs %{
+    auth_id: "123a",
+    avatar: "http://example.com/new/img/path",
+    display_name: "Super Guy",
+    email: "guysnewemail@hotmail.com",
+    name: "Guy Mon",
+    play_balance: 43,
+    rank: 43,
+    watch_list: []
+  }
+  @invalid_attrs %{
+    auth_id: nil,
+    avatar: nil,
+    display_name: nil,
+    email: nil,
+    name: nil,
+    play_balance: nil,
+    rank: nil,
+    watch_list: nil
+  }
 
   def fixture(:user) do
     {:ok, user} = Accounts.create_user(@create_attrs)
@@ -75,6 +103,7 @@ defmodule BullishWeb.UserControllerTest do
     test "deletes chosen user", %{conn: conn, user: user} do
       conn = delete(conn, Routes.user_path(conn, :delete, user))
       assert redirected_to(conn) == Routes.user_path(conn, :index)
+
       assert_error_sent 404, fn ->
         get(conn, Routes.user_path(conn, :show, user))
       end

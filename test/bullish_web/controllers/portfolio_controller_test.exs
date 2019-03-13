@@ -1,4 +1,5 @@
 defmodule BullishWeb.PortfolioControllerTest do
+  @moduledoc false
   use BullishWeb.ConnCase
 
   alias Bullish.Investments

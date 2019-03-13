@@ -1,4 +1,5 @@
 defmodule Bullish.InvestmentsTest do
+  @moduledoc false
   use Bullish.DataCase
 
   alias Bullish.Investments
@@ -19,11 +20,6 @@ defmodule Bullish.InvestmentsTest do
       portfolio
     end
 
-    test "list_portfolios/0 returns all portfolios" do
-      portfolio = portfolio_fixture()
-      assert Investments.list_portfolios() == [portfolio]
-    end
-
     test "get_portfolio!/1 returns the portfolio with given id" do
       portfolio = portfolio_fixture()
       assert Investments.get_portfolio!(portfolio.id) == portfolio
@@ -42,7 +38,10 @@ defmodule Bullish.InvestmentsTest do
 
     test "update_portfolio/2 with valid data updates the portfolio" do
       portfolio = portfolio_fixture()
-      assert {:ok, %Portfolio{} = portfolio} = Investments.update_portfolio(portfolio, @update_attrs)
+
+      assert {:ok, %Portfolio{} = portfolio} =
+               Investments.update_portfolio(portfolio, @update_attrs)
+
       assert portfolio.current_value == 456.7
       assert portfolio.investment == 456.7
       assert portfolio.stocks == %{}
@@ -58,11 +57,6 @@ defmodule Bullish.InvestmentsTest do
       portfolio = portfolio_fixture()
       assert {:ok, %Portfolio{}} = Investments.delete_portfolio(portfolio)
       assert_raise Ecto.NoResultsError, fn -> Investments.get_portfolio!(portfolio.id) end
-    end
-
-    test "change_portfolio/1 returns a portfolio changeset" do
-      portfolio = portfolio_fixture()
-      assert %Ecto.Changeset{} = Investments.change_portfolio(portfolio)
     end
   end
 end

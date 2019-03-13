@@ -44,5 +44,8 @@
 
 </ul>
 
-<span><%= link "Edit", to: Routes.user_path(@conn, :edit, @user) %></span>
-<span><%= link "Back", to: Routes.user_path(@conn, :index) %></span>
+<div class="ui buttons">
+  <%= link "Edit", to: Routes.user_path(@conn, :edit, @user), class: "ui yellow button" %>
+  <div class="or"></div>
+  <%= link "Home", to: Routes.page_path(@conn, :index), class: "ui button" %>
+</div>
