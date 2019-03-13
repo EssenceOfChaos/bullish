@@ -1,4 +1,5 @@
 defmodule Bullish.AccountsTest do
+  @moduledoc false
   use Bullish.DataCase
 
   alias Bullish.Accounts
@@ -6,8 +7,8 @@ defmodule Bullish.AccountsTest do
   describe "users" do
     alias Bullish.Accounts.User
 
-    @valid_attrs %{auth_id: "some auth_id", avatar: "some avatar", display_name: "some display_name", email: "some email", name: "some name", play_balance: 42, rank: 42, watch_list: []}
-    @update_attrs %{auth_id: "some updated auth_id", avatar: "some updated avatar", display_name: "some updated display_name", email: "some updated email", name: "some updated name", play_balance: 43, rank: 43, watch_list: []}
+    @valid_attrs %{auth_id: "auth|57239390837221", avatar: "http://someavatarurl.com/path/to/image", display_name: "super cool dude 1995", email: "cooldude95@aol.com", name: "Franklin", play_balance: 42, rank: 42, watch_list: []}
+    @update_attrs %{auth_id: "auth|57239390837222", avatar: "http://someavatarurl.com/path/to/new/image", display_name: "regular cool dude 1995", email: "coolerdude@aol.com", name: "Franklin1", play_balance: 43, rank: 43, watch_list: []}
     @invalid_attrs %{auth_id: nil, avatar: nil, display_name: nil, email: nil, name: nil, play_balance: nil, rank: nil, watch_list: nil}
 
     def user_fixture(attrs \\ %{}) do

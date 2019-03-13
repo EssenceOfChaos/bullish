@@ -85,7 +85,7 @@ CREATE TABLE public.users (
     id bigint NOT NULL,
     auth_id character varying(255),
     avatar character varying(255),
-    name character varying(255),
+    name character varying(255) NOT NULL,
     email character varying(255),
     display_name character varying(255),
     play_balance integer DEFAULT 5000,
