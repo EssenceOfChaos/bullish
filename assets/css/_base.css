@@ -70,7 +70,7 @@ p {
 /* Basic Styling - roughly from top to bottom */
 span.app-name {
   font-family: 'Varela Round', sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   color: #4b334d;
 }
 
@@ -98,13 +98,13 @@ header.header {
   align-items: center;
   position: relative;
   margin-bottom: 60px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 
 /* Alerts and form errors */
 .alert {
   padding: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 1px;
   border: 2px solid transparent;
   border-radius: 4px;
 }
@@ -161,3 +161,50 @@ footer {
   text-align: center;
 
 }
+
+.ui.cards>.green.card {
+  box-shadow: 0 0 0 1px #d4d4d5, 2px 4px 0 0 #21ba45, 0 2px 3px 0 #d4d4d5;
+}
+
+.ui.cards>.green.card:hover {
+  box-shadow: 0 0 0 2px #d4d4d5, 3px 6px 0 0 #21ba45, 0 4px 3px 0 #d4d4d5;
+}
+
+.ui.cards>.red.card {
+  box-shadow: 0 0 0 1px #d4d4d5, 2px 4px 0 0 #db2828, 0 2px 3px 0 #d4d4d5;
+}
+
+.ui.cards>.red.card:hover {
+  box-shadow: 0 0 0 2px #d4d4d5, 3px 6px 0 0 #db2828, 0 4px 3px 0 #d4d4d5;
+}
+
+
+#user_login {
+  text-decoration: none;
+  color: ghostwhite;
+}
+
+#create_portfolio {
+  text-decoration: none;
+  color: ghostwhite;
+}
+
+/* .four.wide.column {
+  background-color: lightpink;
+  border: 1px solid palevioletred;
+}
+
+.eight.wide.column {
+  background-color: lightskyblue;
+  border: 1px solid blue;
+}
+
+.six.wide.column {
+  background-color: lightgoldenrodyellow;
+  border: 1px solid yellow;
+}
+
+.sixteen.wide.column {
+  background-color: lightgreen;
+  border: 1px solid green;
+} */

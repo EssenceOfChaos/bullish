@@ -44,12 +44,17 @@ defmodule Bullish.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       ## Added Deps ##
-      {:amqp, "~> 0.2.3"}, # Cloud RabbitMQ client
-      {:httpoison, "~> 1.4"}, # # Http client
-      {:poison, "~> 3.1"}, # Parses JSON - used by Auth0
-      {:ueberauth, "~> 0.5"}, # Authentication system
+      # Cloud RabbitMQ client
+      {:amqp, "~> 0.2.3"},
+      # # Http client
+      {:httpoison, "~> 1.4"},
+      # Parses JSON - used by Auth0
+      {:poison, "~> 3.1"},
+      # Authentication system
+      {:ueberauth, "~> 0.5"},
       {:ueberauth_auth0, "~> 0.3"},
-      {:number, "~> 0.5.6"},
+      {:number, "~> 1.0.0"},
+      {:timex, "~> 3.5"},
       {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false}
     ]
   end

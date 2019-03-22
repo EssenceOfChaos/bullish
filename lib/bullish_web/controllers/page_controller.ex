@@ -2,9 +2,10 @@ defmodule BullishWeb.PageController do
   use BullishWeb, :controller
 
   def index(conn, _params) do
+    sectors = Bullish.Api.Service.sectorPerformance()
     IO.puts("**~~~~~~~~ INSPECTING CONN ~~~~~~~~**")
     IO.inspect(conn)
-    render(conn, "index.html")
+    render(conn, "index.html", sectors: sectors)
   end
 
   def test(conn, _params) do

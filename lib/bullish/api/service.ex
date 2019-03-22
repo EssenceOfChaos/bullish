@@ -3,7 +3,9 @@ defmodule Bullish.Api.Service do
     Defines an API to interact with the GenServer
   """
   alias Bullish.Api.Server
-  @sector_url "https://api.iextrading.com/1.0/stock/market/sector-performance"
+  # @v1_sector_url "https://api.iextrading.com/1.0/stock/market/sector-performance"
+  @base_url "https://cloud.iexapis.com/beta/"
+  @sector_path "stock/market/sector-performance"
 
   def batch_quote(%{"stocks" => portfolio_params}) do
     portfolio_params
@@ -15,22 +17,23 @@ defmodule Bullish.Api.Service do
   end
 
   def sectorPerformance() do
-    case HTTPoison.get(@sector_url) do
+    case HTTPoison.get(@base_url <> @sector_path <> "?token=" <> System.get_env("IEX_TOKEN")) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         process_response_body(body)
+
       {:ok, %HTTPoison.Response{status_code: 404}} ->
-        IO.puts "Not found :("
+        IO.puts("Not found :(")
+
       {:error, %HTTPoison.Error{reason: reason}} ->
-        IO.inspect reason
+        IO.inspect(reason)
     end
   end
 
   defp process_response_body(body) do
     body
-    |> Poison.decode!
-    |> IO.inspect
+    |> Poison.decode!()
+    |> IO.inspect()
   end
-
 end
 
 # request:

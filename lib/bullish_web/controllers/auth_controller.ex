@@ -4,7 +4,7 @@ defmodule BullishWeb.AuthController do
 
   plug(Ueberauth)
 
-  alias Ueberauth.Strategy.Helpers
+  # alias Ueberauth.Strategy.Helpers
   alias Bullish.Accounts.Auth.UserFromAuth
   alias Bullish.Accounts
 

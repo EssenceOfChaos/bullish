@@ -2,7 +2,7 @@ defmodule BullishWeb.UserController do
   use BullishWeb, :controller
 
   alias Bullish.Accounts
-  alias Bullish.Accounts.User
+  # alias Bullish.Accounts.User
 
   def index(conn, _params) do
     users = Accounts.list_users()

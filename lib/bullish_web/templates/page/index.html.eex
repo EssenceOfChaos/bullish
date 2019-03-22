@@ -3,18 +3,32 @@
       <div class="ui center aligned header">
         <h1 class="animated slideInUp">Bullish Market</h1>
          <h2>Pick the right stocks and watch your earnings rise!</h2>
-         <div class="ui huge animated purple button" tabindex="0">
-          <div class="visible content">Get started</div>
+          <%= if @conn.assigns[:user_signed_in?] do %>
+         <div class="ui huge animated purple button" tabindex="0" >
+          <div class="visible content">
+            <a href="/portfolios/new" id="create_portfolio">Create Portfolio
+          </div>
+          <div class="hidden content">
+            <i class="chart pie icon"></i>
+          </div>
+          </a>
+        </div>
+        <% else %>
+          <div class="ui huge animated purple button" tabindex="0">
+          <div class="visible content">
+           <a href="/auth/auth0" id="user_login">Get Started
+          </div>
           <div class="hidden content">
             <i class="right arrow icon"></i>
           </div>
-      </div>
+          </a>
+        </div>
+        <% end %>
     </div>
     </header>
     <br>
 
   <section class="ui container">
-
       <div class="ui center aligned header">
     <h2 >
       <i class="chart area icon"></i>
@@ -24,41 +38,38 @@
       </div>
     </h2>
   </div>
-
   <div class="ui text container">
     <br>
     <div class="ui three cards">
-     <div class="card">
+    <%= for sector <- @sectors do %>
+     <div class="<%=color_card(sector["performance"])%> card">
      <div class="content">
-            <div class="header">sector name</div>
+            <div class="header"><%=sector["name"]%></div>
      </div>
         <div class="content">
-            <h4 class="ui sub header">sector performance</h4>
+            <h4 class="ui sub header">todays change</h4>
             <div class="ui small feed">
               <div class="event">
                 <div class="content">
                   <div class="summary">
-
+                  <%=format_performance(sector["performance"]* 100) %>%
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="extra content">
-              Last updated: :date:
+              Updated:
+              <%=format_time(sector["lastUpdated"])%>
           </div>
      </div>
-
+    <%end%>
     </div>
+
   </div>
 
   </section>
-<br>
 
-    <br>
-    <br>
-<%= if @conn.assigns[:user_signed_in?] do %>
-  <div class="item">
-  <%= link raw(~s'<i class="chart pie icon"></i>Create Portfolio'), to: Routes.portfolio_path(@conn, :new), class: "ui yellow button" %>
-  </div>
-<% end %>
+  <br />
+
+
