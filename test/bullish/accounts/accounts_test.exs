@@ -7,9 +7,36 @@ defmodule Bullish.AccountsTest do
   describe "users" do
     alias Bullish.Accounts.User
 
-    @valid_attrs %{auth_id: "auth|57239390837221", avatar: "http://someavatarurl.com/path/to/image", display_name: "super cool dude 1995", email: "cooldude95@aol.com", name: "Franklin", play_balance: 42, rank: 42, watch_list: []}
-    @update_attrs %{auth_id: "auth|57239390837222", avatar: "http://someavatarurl.com/path/to/new/image", display_name: "regular cool dude 1995", email: "coolerdude@aol.com", name: "Franklin1", play_balance: 43, rank: 43, watch_list: []}
-    @invalid_attrs %{auth_id: nil, avatar: nil, display_name: nil, email: nil, name: nil, play_balance: nil, rank: nil, watch_list: nil}
+    @valid_attrs %{
+      auth_id: "auth|57239390837221",
+      avatar: "http://someavatarurl.com/path/to/image",
+      display_name: "super cool dude 1995",
+      email: "cooldude95@aol.com",
+      name: "Franklin",
+      play_balance: 42,
+      rank: 40,
+      watch_list: ["aapl", "tsla"]
+    }
+    @update_attrs %{
+      auth_id: "auth|57239390837222",
+      avatar: "http://someavatarurl.com/path/to/new/image",
+      display_name: "regular cool dude 1995",
+      email: "coolerdude@aol.com",
+      name: "BruceWayne",
+      play_balance: 43,
+      rank: 50,
+      watch_list: ["fb", "ibm"]
+    }
+    @invalid_attrs %{
+      auth_id: nil,
+      avatar: nil,
+      display_name: nil,
+      email: nil,
+      name: nil,
+      play_balance: nil,
+      rank: nil,
+      watch_list: nil
+    }
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
@@ -32,14 +59,14 @@ defmodule Bullish.AccountsTest do
 
     test "create_user/1 with valid data creates a user" do
       assert {:ok, %User{} = user} = Accounts.create_user(@valid_attrs)
-      assert user.auth_id == "some auth_id"
-      assert user.avatar == "some avatar"
-      assert user.display_name == "some display_name"
-      assert user.email == "some email"
-      assert user.name == "some name"
+      assert user.auth_id == "auth|57239390837221"
+      assert user.avatar == "http://someavatarurl.com/path/to/image"
+      assert user.display_name == "super cool dude 1995"
+      assert user.email == "cooldude95@aol.com"
+      assert user.name == "Franklin"
       assert user.play_balance == 42
-      assert user.rank == 42
-      assert user.watch_list == []
+      assert user.rank == 40
+      assert user.watch_list == ["aapl", "tsla"]
     end
 
     test "create_user/1 with invalid data returns error changeset" do
@@ -49,14 +76,14 @@ defmodule Bullish.AccountsTest do
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
       assert {:ok, %User{} = user} = Accounts.update_user(user, @update_attrs)
-      assert user.auth_id == "some updated auth_id"
-      assert user.avatar == "some updated avatar"
-      assert user.display_name == "some updated display_name"
-      assert user.email == "some updated email"
-      assert user.name == "some updated name"
+      assert user.auth_id == "auth|57239390837222"
+      assert user.avatar == "http://someavatarurl.com/path/to/new/image"
+      assert user.display_name == "regular cool dude 1995"
+      assert user.email == "coolerdude@aol.com"
+      assert user.name == "BruceWayne"
       assert user.play_balance == 43
-      assert user.rank == 43
-      assert user.watch_list == []
+      assert user.rank == 50
+      assert user.watch_list == ["fb", "ibm"]
     end
 
     test "update_user/2 with invalid data returns error changeset" do

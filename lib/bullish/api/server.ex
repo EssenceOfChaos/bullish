@@ -8,25 +8,24 @@ defmodule Bullish.Api.Server do
   ## ------------------------------------------------- ##
   ##                   Client API                      ##
   ## ------------------------------------------------- ##
-  def start_link(_opts ) do
+  def start_link(_opts) do
     GenServer.start_link(__MODULE__, :ok, name: :iex_server)
   end
 
-  @spec get_price(atom() | pid() | {atom(), any()} | {:via, atom(), any()}, any()) :: any()
-  def get_price(pid, stock) do
-    GenServer.call(pid, {:stock, stock})
+  def get_price(name, stock) do
+    GenServer.call(name, {:stock, stock})
   end
 
-  def get_state(pid) do
-    GenServer.call(pid, :get_state)
+  def get_state(name) do
+    GenServer.call(name, :get_state)
   end
 
-  def reset_state(pid) do
-    GenServer.cast(pid, :reset_state)
+  def reset_state(name) do
+    GenServer.cast(name, :reset_state)
   end
 
-  def stop(pid) do
-    GenServer.cast(pid, :stop)
+  def stop(name) do
+    GenServer.cast(name, :stop)
   end
 
   ## ------------------------------------------------- ##
@@ -42,6 +41,7 @@ defmodule Bullish.Api.Server do
       {:ok, price} ->
         new_state = update_state(state, stock, price)
         {:reply, "#{price}", new_state}
+
       _ ->
         {:reply, :error, state}
     end
@@ -64,16 +64,15 @@ defmodule Bullish.Api.Server do
 
   def terminate(reason, stats) do
     # We could write to a file, database etc
-    IO.puts "server terminated because of #{inspect reason}"
-    inspect stats
+    IO.puts("server terminated because of #{inspect(reason)}")
+    inspect(stats)
     :ok
   end
 
   def handle_info(msg, state) do
-    IO.puts "received #{inspect msg}"
+    IO.puts("received #{inspect(msg)}")
     {:noreply, state}
   end
-
 
   ## ------------------------------------------------- ##
   ##                   Helper Functions                ##
@@ -81,10 +80,12 @@ defmodule Bullish.Api.Server do
 
   defp price_of(stock) do
     uri = String.replace(@url, "{SYMBOL}", stock)
+
     case HTTPoison.get(uri) do
       {:ok, %{status_code: 200, body: body}} -> Poison.decode(body)
-      {:ok, %{status_code: 404}} -> "Not found"# 404 Not Found Error
-      {:error, %HTTPoison.Error{reason: reason}} -> IO.inspect reason
+      # 404 Not Found Error
+      {:ok, %{status_code: 404}} -> "Not found"
+      {:error, %HTTPoison.Error{reason: reason}} -> IO.inspect(reason)
     end
   end
 
@@ -92,22 +93,9 @@ defmodule Bullish.Api.Server do
     case Map.has_key?(old_state, stock) do
       true ->
         Map.update!(old_state, stock, price)
+
       false ->
         Map.put_new(old_state, stock, price)
     end
   end
-
 end
-
-# iex(1)> Service.get_price(:iex_server, "aapl")
-# "166.52"
-# iex(2)> Service.get_state(:iex_server)
-# %{"aapl" => 166.52}
-# iex(3)> Process.whereis(:iex_server)
-# #PID<0.389.0>
-# iex(4)> Process.exit(:iex_server, :kill)
-# iex(4)> Process.whereis(:iex_server) |>
-# ...(4)> Process.exit(:kill)
-# true
-# iex(5)> Process.whereis(:iex_server)
-# #PID<0.402.0>

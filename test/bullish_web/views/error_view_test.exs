@@ -5,7 +5,8 @@ defmodule BullishWeb.ErrorViewTest do
   import Phoenix.View
 
   test "renders 404.html" do
-    assert render_to_string(BullishWeb.ErrorView, "404.html", []) == "Not Found"
+    assert render_to_string(BullishWeb.ErrorView, "404.html", []) =~
+             "Sorry, the page you are looking for does not exist."
   end
 
   test "renders 500.html" do

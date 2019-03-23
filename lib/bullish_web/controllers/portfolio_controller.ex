@@ -17,7 +17,6 @@ defmodule BullishWeb.PortfolioController do
 
   def create(conn, %{"portfolio" => portfolio_params}) do
     current_user = conn.assigns[:current_user]
-    IO.inspect(current_user)
 
     case Investments.create_portfolio(current_user, portfolio_params) do
       {:ok, portfolio} ->

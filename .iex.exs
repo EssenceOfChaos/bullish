@@ -1,1 +1,1 @@
-alias Bullish.Api.Service
+alias Bullish.Api.{Service, Server}

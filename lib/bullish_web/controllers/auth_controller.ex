@@ -1,6 +1,6 @@
 defmodule BullishWeb.AuthController do
   use BullishWeb, :controller
-  alias BullishWeb.Router.Helpers
+  # alias BullishWeb.Router.Helpers
 
   plug(Ueberauth)
 
