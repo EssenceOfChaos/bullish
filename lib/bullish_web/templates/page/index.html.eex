@@ -2,7 +2,7 @@
       <div class="ui text container">
       <div class="ui center aligned header">
         <h1 class="animated slideInUp">Bullish Market</h1>
-         <h2>Pick the right stocks and watch your earnings rise!</h2>
+         <h2>Pick your stocks and watch your earnings rise!</h2>
           <%= if @conn.assigns[:user_signed_in?] do %>
          <div class="ui huge animated purple button" tabindex="0" >
           <div class="visible content">
@@ -35,6 +35,7 @@
       <div class="content">
         Sector Performance
         <div class="sub header">A Quick Gauge of the Economy</div>
+        <div class="sub message">all times provided in UTC</div>
       </div>
     </h2>
   </div>

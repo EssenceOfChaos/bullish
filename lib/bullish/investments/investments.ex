@@ -9,47 +9,12 @@ defmodule Bullish.Investments do
   alias Bullish.Investments.Portfolio
   alias Bullish.Api.Service
 
-  @doc """
-  Returns the list of portfolios.
-
-  ## Examples
-
-      iex> list_portfolios()
-      [%Portfolio{}, ...]
-
-  """
   def list_portfolios do
     Repo.all(Portfolio)
   end
 
-  @doc """
-  Gets a single portfolio.
-
-  Raises `Ecto.NoResultsError` if the Portfolio does not exist.
-
-  ## Examples
-
-      iex> get_portfolio!(123)
-      %Portfolio{}
-
-      iex> get_portfolio!(456)
-      ** (Ecto.NoResultsError)
-
-  """
   def get_portfolio!(id), do: Repo.get!(Portfolio, id)
 
-  @doc """
-  Creates a portfolio.
-
-  ## Examples
-
-      iex> create_portfolio(%{field: value})
-      {:ok, %Portfolio{}}
-
-      iex> create_portfolio(%{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
   def create_portfolio(%User{} = user, attrs \\ %{}) do
     stocks = Service.batch_quote(attrs)
 

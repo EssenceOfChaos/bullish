@@ -189,7 +189,17 @@ footer {
   color: ghostwhite;
 }
 
-/* .four.wide.column {
+/* .two.wide.column {
+  background-color: lightseagreen;
+  border: 1px solid black;
+}
+
+.three.wide.column {
+  background-color: lightcyan;
+  border: 1px solid brown;
+}
+
+.four.wide.column {
   background-color: lightpink;
   border: 1px solid palevioletred;
 }
@@ -208,3 +218,10 @@ footer {
   background-color: lightgreen;
   border: 1px solid green;
 } */
+
+
+div.sub.message {
+  font-size: 0.35em;
+  color: rgba(0, 0, 0, .6);
+  font-style: italic;
+}

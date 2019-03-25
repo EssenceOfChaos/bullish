@@ -8,15 +8,6 @@ defmodule Bullish.Accounts do
 
   alias Bullish.Accounts.User
 
-  @doc """
-  Returns the list of users.
-
-  ## Examples
-
-      iex> list_users()
-      [%User{}, ...]
-
-  """
   def list_users do
     Repo.all(User)
   end
@@ -40,7 +31,10 @@ defmodule Bullish.Accounts do
       ** (Ecto.NoResultsError)
 
   """
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_user!(id) do
+    Repo.get!(User, id)
+    |> Repo.preload(:portfolios)
+  end
 
   @doc """
   Creates a user.
@@ -69,12 +63,11 @@ defmodule Bullish.Accounts do
   end
 
   # defp check_for_user(id) do
-    # user =
-    #   from(u in User)
-    #   |> where([u], u.auth_id == ^id)
-    #   |> Repo.one()
+  # user =
+  #   from(u in User)
+  #   |> where([u], u.auth_id == ^id)
+  #   |> Repo.one()
   # end
-
 
   @doc """
   Updates a user.

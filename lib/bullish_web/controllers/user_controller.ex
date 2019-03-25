@@ -11,6 +11,8 @@ defmodule BullishWeb.UserController do
 
   def show(conn, %{"id" => id}) do
     user = Accounts.get_user!(id)
+    IO.inspect(conn)
+    IO.inspect(user)
     render(conn, "show.html", user: user)
   end
 

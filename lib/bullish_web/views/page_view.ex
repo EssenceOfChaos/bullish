@@ -15,7 +15,7 @@ defmodule BullishWeb.PageView do
   def format_time(epoch) do
     epoch
     |> DateTime.from_unix!(:millisecond)
-    |> Timex.format!("%I:%M %p", :strftime)
+    |> Timex.format!("%l:%M %p", :strftime)
   end
 
   def color_card(performance) when is_float(performance) do

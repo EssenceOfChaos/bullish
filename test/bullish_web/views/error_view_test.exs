@@ -1,4 +1,5 @@
 defmodule BullishWeb.ErrorViewTest do
+  @moduledoc false
   use BullishWeb.ConnCase, async: true
 
   # Bring render/3 and render_to_string/3 for testing custom views

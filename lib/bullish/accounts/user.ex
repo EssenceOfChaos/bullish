@@ -5,7 +5,6 @@ defmodule Bullish.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-
   schema "users" do
     field :auth_id, :string
     field :avatar, :string
@@ -16,7 +15,7 @@ defmodule Bullish.Accounts.User do
     field :rank, :integer
     field :watch_list, {:array, :string}
 
-    has_one(:portfolios, Bullish.Investments.Portfolio)
+    has_many(:portfolios, Bullish.Investments.Portfolio)
 
     timestamps()
   end
@@ -24,7 +23,16 @@ defmodule Bullish.Accounts.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:auth_id, :avatar, :name, :email, :display_name, :play_balance, :rank, :watch_list])
+    |> cast(attrs, [
+      :auth_id,
+      :avatar,
+      :name,
+      :email,
+      :display_name,
+      :play_balance,
+      :rank,
+      :watch_list
+    ])
     |> validate_required([:auth_id, :avatar, :name])
   end
 end
