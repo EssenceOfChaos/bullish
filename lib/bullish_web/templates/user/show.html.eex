@@ -1,6 +1,5 @@
-<h1 >Profile</h1>
+<h1>Profile</h1>
 <section class="ui container">
-
   <div class="ui grid">
     <div class="four wide column">
       <div class="ui fluid card">
@@ -29,37 +28,34 @@
     </div>
     <div class="twelve wide column">
       <%= if @user.portfolios do %>
-  <%= for portfolio <- @user.portfolios do %>
-  <div class="ui card">
-    <div class="content">
-      <div class="header">Portfolio # <%=portfolio.id%> </div>
-      <div class="meta">
-        <span class="date">
-          <p>
-            <i class="calendar alternate outline icon"></i>
-            Created on:
-            <%=portfolio.inserted_at.month%>/
-            <%=portfolio.inserted_at.day%>/
-            <%=portfolio.inserted_at.year%>
-        </span>
+      <%= for portfolio <- @user.portfolios do %>
+      <div class="ui card">
+        <div class="content">
+          <div class="header">Portfolio # <%=portfolio.id%> </div>
+          <div class="meta">
+            <span class="date">
+              <p>
+                <i class="calendar alternate outline icon"></i>
+                Created on:
+                <%=portfolio.inserted_at.month%>/
+                <%=portfolio.inserted_at.day%>/
+                <%=portfolio.inserted_at.year%>
+            </span>
+          </div>
+          <div class="description">
+            <%= for {k, v} <- portfolio.stocks do %>
+            <strong><%= k %></strong>: <%= Number.Currency.number_to_currency(v) %><br>
+            <%end%>
+          </div>
+        </div>
+        <div class="extra content"></div>
       </div>
-      <div class="description">
-        <%= for {k, v} <- portfolio.stocks do %>
-        <strong><%= k %></strong>: <%= Number.Currency.number_to_currency(v) %><br>
-        <%end%>
-      </div>
-    </div>
-    <div class="extra content"></div>
-  </div>
-  <%end%>
-  <% else %>
-  <p>Looks like you haven't created a portfolio yet!</p>
-  <% end %>
+      <%end%>
+      <% else %>
+      <p>Looks like you haven't created a portfolio yet!</p>
+      <% end %>
 
     </div>
-
-
-
     <div class="three wide column">
       <br />
       <div class="ui buttons" style="text-align: center">
@@ -67,13 +63,9 @@
         <div class="or"></div>
         <%= link "Home", to: Routes.page_path(@conn, :index), class: "ui button" %>
       </div>
-
     </div>
-
 
   </div>
   <br />
-
-
 
 </section>

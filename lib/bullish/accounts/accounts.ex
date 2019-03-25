@@ -12,10 +12,14 @@ defmodule Bullish.Accounts do
     Repo.all(User)
   end
 
-  def get_user(auth_id) do
-    query = Ecto.Query.from(u in User, where: u.auth_id == ^auth_id)
-    Repo.one(query)
+  def get_user(id) do
+    Repo.get!(User, id)
   end
+
+  # def get_user(auth_id) do
+  #   query = Ecto.Query.from(u in User, where: u.auth_id == ^auth_id)
+  #   Repo.one(query)
+  # end
 
   @doc """
   Gets a single user.

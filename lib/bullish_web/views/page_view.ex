@@ -23,7 +23,7 @@ defmodule BullishWeb.PageView do
 
     case String.at(str, 0) do
       "-" -> "red"
-      "0" -> "green"
+      _ -> "green"
     end
   end
 
