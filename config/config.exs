@@ -34,6 +34,9 @@ config :ueberauth, Ueberauth.Strategy.Auth0.OAuth,
   client_id: System.get_env("AUTH0_CLIENT_ID"),
   client_secret: System.get_env("AUTH0_CLIENT_SECRET")
 
+config :bullish, Bullish.Accounts.Auth.Guardian,
+  issuer: "bullish",
+  secret_key: System.get_env("GUARDIAN_SK")
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason

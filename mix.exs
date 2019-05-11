@@ -1,5 +1,7 @@
 defmodule Bullish.MixProject do
-  @moduledoc false
+  @moduledoc """
+  The application entry point and list of dependencies.
+  """
   use Mix.Project
 
   def project do
@@ -44,18 +46,25 @@ defmodule Bullish.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      ## Added Deps ##
-      # Cloud RabbitMQ client
+      ##### Added Deps #####
+      # Cloud RabbitMQ client #
       {:amqp, "~> 0.2.3"},
-      # # Http client
+      # Http client #
       {:httpoison, "~> 1.4"},
-      # Parses JSON - used by Auth0
+      # Parses JSON - used by Auth0 #
       {:poison, "~> 3.1"},
-      # Authentication system
+      # Authentication system #
+      {:guardian, "~> 1.2.1"},
       {:ueberauth, "~> 0.5"},
       {:ueberauth_auth0, "~> 0.3"},
+      # State Machine #
+      {:gen_state_machine, "~> 2.0"},
+      # Utilities #
       {:number, "~> 1.0.0"},
       {:timex, "~> 3.5"},
+      # State Machine #
+      {:gen_state_machine, "~> 2.0"},
+      # Static code analysis #
       {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false}
     ]
   end

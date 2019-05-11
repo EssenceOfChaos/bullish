@@ -4,8 +4,10 @@ defmodule Bullish.Accounts do
   """
 
   import Ecto.Query, warn: false
-  alias Bullish.Repo
+  import Plug.Conn
 
+  alias Bullish.Repo
+  alias Bullish.Accounts.Auth.Guardian
   alias Bullish.Accounts.User
 
   def list_users do
@@ -14,6 +16,7 @@ defmodule Bullish.Accounts do
 
   def get_user(id) do
     Repo.get!(User, id)
+    |> Repo.preload(:portfolios)
   end
 
   # def get_user(auth_id) do
@@ -38,6 +41,28 @@ defmodule Bullish.Accounts do
   def get_user!(id) do
     Repo.get!(User, id)
     |> Repo.preload(:portfolios)
+  end
+
+  def get_current_user(conn) do
+    Guardian.Plug.current_resource(conn)
+  end
+
+  def login(conn, user) do
+    conn
+    |> Guardian.Plug.sign_in(user)
+    |> assign(:current_user, user)
+    |> put_user_token(user)
+  end
+
+  def logout(conn) do
+    conn
+    |> Guardian.Plug.sign_out()
+  end
+
+  def load_current_user(conn, _) do
+    conn
+    |> assign(:current_user, Guardian.Plug.current_resource(conn))
+    |> put_user_token(Guardian.Plug.current_resource(conn))
   end
 
   @doc """
@@ -118,5 +143,12 @@ defmodule Bullish.Accounts do
   """
   def change_user(%User{} = user) do
     User.changeset(user, %{})
+  end
+
+  defp put_user_token(conn, user) do
+    token = Phoenix.Token.sign(conn, "user socket", user.id)
+
+    conn
+    |> assign(:user_token, token)
   end
 end

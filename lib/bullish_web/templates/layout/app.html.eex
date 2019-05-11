@@ -28,6 +28,9 @@
       </main>
     </div>
 
+  <!-- userToken -->
+  <script>window.userToken = "<%= assigns[:user_token] %>"</script>
+
   <!-- FOOTER -->
   <%= render "_footer.html", conn: @conn %>
 
