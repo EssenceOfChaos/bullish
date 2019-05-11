@@ -15,7 +15,7 @@
             </span>
           </div>
           <div class="description">
-            <%= @user.display_name || "User" %> is currently watching <%= @user.watch_list || "0 stocks" %>
+            watching <%= @user.watch_list || "0 stocks" %>
           </div>
         </div>
         <div class="extra content">
@@ -48,7 +48,9 @@
             <%end%>
           </div>
         </div>
-        <div class="extra content"></div>
+        <div class="extra content">
+        Total value:
+        </div>
       </div>
       <%end%>
       <% else %>
@@ -69,3 +71,16 @@
   <br />
 
 </section>
+
+<br />
+
+<div>
+  <p>stock data</p>
+ <%= if @user.portfolios do %>
+    <%= for portfolio <- @user.portfolios do %>
+     <%= for {k, v} <- portfolio.stocks do %>
+      <strong><%= k %></strong>: <%= Number.Currency.number_to_currency(v) %><br>
+     <% end %>
+    <% end %>
+  <% end %>
+</div>

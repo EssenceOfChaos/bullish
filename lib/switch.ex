@@ -1,5 +1,8 @@
 defmodule Bullish.Switch do
-  # EXAMPLE GEN STATE MACHINE WRAPPER
+  @moduledoc """
+  An example state machine
+  """
+
   use GenStateMachine
 
   # Client

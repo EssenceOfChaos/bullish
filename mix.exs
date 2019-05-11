@@ -62,8 +62,6 @@ defmodule Bullish.MixProject do
       # Utilities #
       {:number, "~> 1.0.0"},
       {:timex, "~> 3.5"},
-      # State Machine #
-      {:gen_state_machine, "~> 2.0"},
       # Static code analysis #
       {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false}
     ]
